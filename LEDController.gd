@@ -12,13 +12,13 @@ onready var color_buttons = [
 
 onready var effect_selector = get_node("CenterContainer/HBoxContainer/Panel/VBoxContainer/OptionButton")
 onready var intensity_slider = get_node("CenterContainer/HBoxContainer/Panel/VBoxContainer/HSlider")
-onready var turn_off_check = get_node("CenterContainer/HBoxContainer/Panel/VBoxContainer/CheckButton")
+onready var turn_off_button = get_node("CenterContainer/HBoxContainer/Panel/VBoxContainer/Button")
 onready var loop_effects_check = get_node("CenterContainer/HBoxContainer/Panel/VBoxContainer/CheckBox2")
 onready var glow_effect_check = get_node("CenterContainer/HBoxContainer/Panel/VBoxContainer/CheckBox3")
 onready var serial_controller = get_node("SerialController")
 
 onready var config_panel = get_node("CenterContainer/HBoxContainer/Panel2")
-onready var config_port = get_node("CenterContainer/HBoxContainer/Panel2/VBoxContainer/LineEdit2")
+onready var config_port = get_node("CenterContainer/HBoxContainer/Panel2/VBoxContainer/OptionButton")
 onready var config_baund = get_node("CenterContainer/HBoxContainer/Panel2/VBoxContainer/LineEdit")
 
 onready var log_label = get_node("Label")
@@ -35,8 +35,7 @@ func _ready() -> void:
 	intensity_slider.value = 9
 	intensity_slider.connect("value_changed", self, "_on_intensity_changed")
 
-	turn_off_check.pressed = false
-	turn_off_check.connect("toggled", self, "_on_toggle_off")
+	turn_off_button.connect("pressed", self, "_on_turnoff_pressed")
 
 	loop_effects_check.pressed = false
 	loop_effects_check.connect("toggled", self, "_on_loop_toggled")
@@ -45,7 +44,13 @@ func _ready() -> void:
 	loop_effects_check.connect("toggled", self, "_on_glow_toggled")
 
 	config_panel.hide()
-	config_port.text = serial_controller.PortName
+	var ports = Array(serial_controller.GetAllPorts())
+	for port in ports:
+		config_port.add_item(port)
+	var index = ports.find(serial_controller.PortName)
+	if index != -1:
+		config_port.selected = index
+	
 	config_baund.text = str(serial_controller.BaudRate)
 
 	serial_controller.connect("StatusChanged", self, "on_serial_status_changed")
@@ -62,9 +67,8 @@ func _on_effect_changed(index):
 func _on_intensity_changed(value):
 	_send_to_led_controller(str(value))
 
-func _on_toggle_off(enabled):
-	if enabled:
-		_send_to_led_controller("0")
+func _on_turnoff_pressed():
+	_send_to_led_controller("0")
 
 func _on_loop_toggled(enabled):
 	if enabled:

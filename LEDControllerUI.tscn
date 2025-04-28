@@ -253,12 +253,11 @@ margin_right = 354.0
 margin_bottom = 346.0
 text = "Glow Effect"
 
-[node name="CheckButton" type="CheckButton" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer"]
+[node name="Button" type="Button" parent="CenterContainer/HBoxContainer/Panel/VBoxContainer"]
 margin_top = 356.0
-margin_right = 201.0
-margin_bottom = 396.0
-size_flags_horizontal = 0
-text = "Turn Off All"
+margin_right = 354.0
+margin_bottom = 391.0
+text = "Turn OFF everything"
 
 [node name="Button" type="Button" parent="CenterContainer/HBoxContainer"]
 margin_left = 404.0
@@ -297,30 +296,30 @@ text = "Port:"
 align = 1
 valign = 1
 
-[node name="LineEdit2" type="LineEdit" parent="CenterContainer/HBoxContainer/Panel2/VBoxContainer"]
+[node name="OptionButton" type="OptionButton" parent="CenterContainer/HBoxContainer/Panel2/VBoxContainer"]
 margin_top = 39.0
 margin_right = 159.0
-margin_bottom = 78.0
+margin_bottom = 74.0
 
 [node name="Label3" type="Label" parent="CenterContainer/HBoxContainer/Panel2/VBoxContainer"]
-margin_top = 88.0
+margin_top = 84.0
 margin_right = 159.0
-margin_bottom = 117.0
+margin_bottom = 113.0
 text = "Bound Rate:"
 align = 1
 valign = 1
 
 [node name="LineEdit" type="LineEdit" parent="CenterContainer/HBoxContainer/Panel2/VBoxContainer"]
-margin_top = 127.0
+margin_top = 123.0
 margin_right = 159.0
-margin_bottom = 166.0
+margin_bottom = 162.0
 text = "9600"
 align = 2
 
 [node name="Button" type="Button" parent="CenterContainer/HBoxContainer/Panel2/VBoxContainer"]
-margin_top = 176.0
+margin_top = 172.0
 margin_right = 159.0
-margin_bottom = 211.0
+margin_bottom = 207.0
 text = "Apply"
 
 [node name="SerialController" type="Node" parent="."]

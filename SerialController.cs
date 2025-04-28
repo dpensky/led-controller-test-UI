@@ -20,7 +20,6 @@ public class SerialController : Node
         GD.Print("Bound rate is: " + BaudRate);
     }
 
-
     public void WriteData(string data)
     {
         GD.Print($"[SerialManager] Trying to send character {data} to serial");
@@ -40,6 +39,11 @@ public class SerialController : Node
         {
             GD.PrintErr("[SerialManager] Serial port is not open.");
         }
+    }
+
+    public string[] GetAllPorts()
+    {
+        return SerialPort.GetPortNames();
     }
 
     public void OpenPort()
