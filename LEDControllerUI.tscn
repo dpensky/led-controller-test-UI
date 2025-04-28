@@ -1,0 +1,265 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Roboto-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://LEDController.gd" type="Script" id=2]
+[ext_resource path="res://SerialController.cs" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.14902, 0.172549, 0.231373, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.337255, 0.392157, 0.482353, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 0, 0, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.105882, 0.0941176, 0.0941176, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 1, 0, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.105882, 0.0941176, 0.0941176, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0, 1, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.105882, 0.0941176, 0.0941176, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0, 1, 1, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.105882, 0.0941176, 0.0941176, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 1, 0, 1, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.105882, 0.0941176, 0.0941176, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 1, 0.3, 0, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.105882, 0.0941176, 0.0941176, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="LEDControllerUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 2 )
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.6 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+margin_left = 312.0
+margin_top = 100.0
+margin_right = 712.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 400, 400 )
+custom_styles/panel = SubResource( 9 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -177.0
+margin_top = -198.0
+margin_right = 177.0
+margin_bottom = 198.0
+custom_constants/separation = 10
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer"]
+margin_right = 354.0
+margin_bottom = 29.0
+text = "Select Color:"
+align = 1
+valign = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CenterContainer/Panel/VBoxContainer"]
+margin_top = 39.0
+margin_right = 354.0
+margin_bottom = 89.0
+custom_constants/separation = 10
+
+[node name="Button1" type="Button" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer3"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 3 )
+text = "a"
+
+[node name="Button2" type="Button" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer3"]
+margin_left = 60.0
+margin_right = 110.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 4 )
+text = "b"
+
+[node name="Button3" type="Button" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer3"]
+margin_left = 120.0
+margin_right = 170.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 5 )
+text = "c"
+
+[node name="Button4" type="Button" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer3"]
+margin_left = 180.0
+margin_right = 230.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 6 )
+text = "d"
+
+[node name="Button5" type="Button" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer3"]
+margin_left = 240.0
+margin_right = 290.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 7 )
+text = "e"
+
+[node name="Button6" type="Button" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer3"]
+margin_left = 300.0
+margin_right = 350.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 8 )
+text = "f"
+
+[node name="Label3" type="Label" parent="CenterContainer/Panel/VBoxContainer"]
+margin_top = 99.0
+margin_right = 354.0
+margin_bottom = 128.0
+text = "Effect:"
+align = 1
+valign = 1
+
+[node name="OptionButton" type="OptionButton" parent="CenterContainer/Panel/VBoxContainer"]
+margin_top = 138.0
+margin_right = 354.0
+margin_bottom = 173.0
+rect_min_size = Vector2( 150, 30 )
+text = "Select Effect"
+items = [ "Arco-iris", null, false, 0, null, "Respiração", null, false, 1, null, "Pisca", null, false, 2, null, "Radar", null, false, 3, null ]
+
+[node name="Label4" type="Label" parent="CenterContainer/Panel/VBoxContainer"]
+margin_top = 183.0
+margin_right = 354.0
+margin_bottom = 212.0
+text = "Intensity:"
+align = 1
+valign = 1
+
+[node name="HSlider" type="HSlider" parent="CenterContainer/Panel/VBoxContainer"]
+margin_top = 222.0
+margin_right = 354.0
+margin_bottom = 252.0
+rect_min_size = Vector2( 200, 30 )
+min_value = 1.0
+max_value = 9.0
+value = 9.0
+tick_count = 9
+ticks_on_borders = true
+
+[node name="CheckBox2" type="CheckBox" parent="CenterContainer/Panel/VBoxContainer"]
+margin_top = 262.0
+margin_right = 354.0
+margin_bottom = 299.0
+text = "Loop Effect"
+
+[node name="CheckBox3" type="CheckBox" parent="CenterContainer/Panel/VBoxContainer"]
+margin_top = 309.0
+margin_right = 354.0
+margin_bottom = 346.0
+text = "Glow Effect"
+
+[node name="CheckButton" type="CheckButton" parent="CenterContainer/Panel/VBoxContainer"]
+margin_top = 356.0
+margin_right = 354.0
+margin_bottom = 396.0
+text = "Turn Off"
+
+[node name="SerialController" type="Node" parent="."]
+script = ExtResource( 3 )
