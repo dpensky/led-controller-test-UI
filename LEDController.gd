@@ -23,6 +23,10 @@ onready var config_baund = get_node("CenterContainer/HBoxContainer/Panel2/VBoxCo
 
 onready var log_label = get_node("Label")
 
+var last_color = ""
+var last_effect = ""
+var last_command = ""
+
 
 func _ready() -> void:
 	for button in color_buttons:
@@ -40,8 +44,8 @@ func _ready() -> void:
 	loop_effects_check.pressed = false
 	loop_effects_check.connect("toggled", self, "_on_loop_toggled")
 
-	loop_effects_check.pressed = false
-	loop_effects_check.connect("toggled", self, "_on_glow_toggled")
+	glow_effect_check.pressed = false
+	glow_effect_check.connect("toggled", self, "_on_glow_toggled")
 
 	config_panel.hide()
 	var ports = Array(serial_controller.GetAllPorts())
@@ -59,15 +63,23 @@ func _ready() -> void:
 
 func _on_color_selected(color):
 	_send_to_led_controller(color)
+	last_command = "color"
+	last_color = color
+	last_effect = ""
 
 func _on_effect_changed(index):
 	var character = ["g", "h", "i", "j"]
 	_send_to_led_controller(character[index])
+	last_command = "effect"
+	last_effect = character[index]
+	last_color = ""
 
 func _on_intensity_changed(value):
 	_send_to_led_controller(str(value))
 
 func _on_turnoff_pressed():
+	glow_effect_check.pressed = false
+	loop_effects_check.pressed = false
 	_send_to_led_controller("0")
 
 func _on_loop_toggled(enabled):
@@ -77,6 +89,11 @@ func _on_loop_toggled(enabled):
 func _on_glow_toggled(enabled):
 	if enabled:
 		_send_to_led_controller("s")
+	else:
+		if last_command == "color":
+			_send_to_led_controller(last_color)
+		elif last_command == "effect":
+			_send_to_led_controller(last_effect)
 
 func _send_to_led_controller(character):
 	serial_controller.WriteData(character)
